@@ -1,10 +1,13 @@
-var fs = require("fs")
+const fs = require('fs');
 
+// Returns the path to the word list which is separated by `\n`
+const wordListPath = require('word-list');
+
+//=> […, 'abmhos', 'abnegate', …]
 
 module.exports = function(app) {
     app.post("/api/poststring", function(req, res) {
-        const words = fs.readFileSync("./public/dictionary/words.txt", "utf8");
-        const wordsArray = words.split("\r\n");
+        const wordsArray = fs.readFileSync(wordListPath, 'utf8').split('\n');
         wordsArray.push("homespotter")
         let rowsOfSearch = req.body.stringtoparse.split("\r\n");
         let splitRowsOfSearch = [];
