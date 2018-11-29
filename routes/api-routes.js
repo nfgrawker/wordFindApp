@@ -3,7 +3,7 @@ var fs = require("fs")
 
 module.exports = function(app) {
     app.post("/api/poststring", function(req, res) {
-        const words = fs.readFileSync("./public/dictionary/words.txt", "utf8");
+        const words = fs.readFileSync("words.txt", "utf8");
         const wordsArray = words.split("\r\n");
         wordsArray.push("homespotter")
         let rowsOfSearch = req.body.stringtoparse.split("\r\n");
